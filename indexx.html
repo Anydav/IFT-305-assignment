@@ -15,27 +15,35 @@
             <a href="#">Videos</a>
             <a href="#">About Us</a>
         </nav>
+        <div class="search-container">
+            <input type="text" placeholder="Search courses..." class="search-input">
+            <button class="search-btn">Search</button>
+        </div>
+        
+        <div class="auth-buttons">
+            <button class="login-btn">Login</button>
+            <button class="signup-btn">Sign Up</button>
+        </div>
+        
     </header>
 
     <main class="hero-section">
         <div class="slider">
             <div class="slide active">
-                <img src="asset/anime-night-effect_bGVoa2uUmZqaraWkpJRmaWVlrW5lZQ.jpg" alt="Slide 1">
+                <img src="asset/UniEdu.jpg" alt="uniedu">
             </div>
             <div class="slide">
-                <img src="asset/b0963abcf745284658606872ca888663.jpg" alt="Slide 2">
+                <img src="asset/IFT 305.jpg" alt="IFT 305">
             </div>
             <div class="slide">
-                <img src="asset/b1b9cfe132504902c29db1a7983525ef--church-stage-pcc.jpg" alt="Slide 3">
+                <img src="asset/301.jpg" alt="IFT 301">
             </div>
             <div class="slide">
-                <img src="asset/bb7172581bb837e79d6e6c96792aa90c--ministry-finance.jpg" alt="Slide 4">
+                <img src="asset/303.jpg" alt="IFT 303">
             </div>
             <div class="slide">
-                <img src="asset/beautiful-starry-night-above-river-260nw-709101865.jpg" alt="Slide 5">
-            </div>
-            <div class="center-text">Welcome to UniEdu Platform</div>
-        </div>
+                <img src="asset/Prepared by group 2.jpg" alt="Prepared by group 2">
+
     </main>
 
     <section class="courses-section">
@@ -72,6 +80,13 @@
             </div>
         </div>
     </section>
+    <audio id="background-music" loop>
+        <source src="asset/educational sound.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <button id="toggle-music" class="music-toggle">🔊 Mute Music</button>
+    
 
     <footer class="footer">
         <p>Contact Us: uniedu@university.edu.ng | +234 800 000 0000</p>
@@ -85,7 +100,37 @@
             slides[current].classList.remove('active');
             current = (current + 1) % slides.length;
             slides[current].classList.add('active');
-        }, 30000);
+        }, 7000);
+
+        const bgMusic = document.getElementById("background-music");
+    const toggleBtn = document.getElementById("toggle-music");
+    const videos = document.querySelectorAll("video");
+
+    // Auto-play when page loads
+    window.addEventListener("load", () => {
+        bgMusic.volume = 0.4; // lower volume for subtle ambience
+        bgMusic.play().catch(e => console.log("Autoplay blocked:", e));
+    });
+
+    // Pause music when a video is played
+    videos.forEach(video => {
+        video.addEventListener("play", () => {
+            if (!bgMusic.paused) {
+                bgMusic.pause();
+            }
+        });
+    });
+
+    // Toggle music manually
+    toggleBtn.addEventListener("click", () => {
+        if (bgMusic.paused) {
+            bgMusic.play();
+            toggleBtn.innerText = "🔊 Mute Music";
+        } else {
+            bgMusic.pause();
+            toggleBtn.innerText = "🔇 Unmute Music";
+        }
+    });
     </script>
 </body>
 </html>

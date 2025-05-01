@@ -31,7 +31,80 @@ body {
     text-decoration: none;
     color: blue;
     font-size: 1rem;
-    transition: transform 0.3s ease;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: white;
+    max-width: 300px;
+    margin-left: 20px;
+}
+
+.search-input {
+    border: none;
+    padding: 10px 15px;
+    outline: none;
+    flex: 1;
+    font-size: 0.95rem;
+}
+
+.search-btn {
+    padding: 10px 15px;
+    background-color: #002366;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.search-btn:hover {
+    background-color: #0047ab;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.login-btn, .signup-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-btn {
+    background-color: white;
+    color: #002366;
+    border: 1px solid #002366;
+}
+
+.signup-btn {
+    background-color: #002366;
+    color: white;
+}
+
+.login-btn:hover {
+    background-color: #002366;
+    color: white;
+}
+
+.signup-btn:hover {
+    background-color: #0047ab;
+}
+
+@media (max-width: 768px) {
+    .auth-buttons {
+        flex-direction: column;
+        margin-top: 10px;
+    }
 }
 
 
@@ -69,17 +142,6 @@ body {
     object-fit: cover;
 }
 
-.center-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2rem;
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    padding: 15px 30px;
-    border-radius: 10px;
-}
 
 /* Course Samples Section */
 .courses-section {
@@ -134,7 +196,6 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.95rem;
-    transition: background 0.3s ease;
 }
 
 .learn-btn:hover {
@@ -163,10 +224,6 @@ body {
         margin-top: 10px;
     }
 
-    .slider .center-text {
-        font-size: 1.2rem;
-        padding: 10px 20px;
-    }
 
     .course-box {
         flex-direction: column;
@@ -176,3 +233,51 @@ body {
         width: 100%;
     }
 }
+
+
+/*animations*/
+
+/* Smooth Slide Fade */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(1.05); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.slide.active {
+    animation: fadeIn 1s ease-in-out;
+}
+
+
+/* Button Hover Bounce */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.learn-btn:hover,
+.signup-btn:hover,
+.login-btn:hover {
+    animation: bounce 0.4s ease-in-out;
+}
+
+/*Audio*/
+.music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #002366;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+.music-toggle:hover {
+    background-color: #0047ab;
+}
+
